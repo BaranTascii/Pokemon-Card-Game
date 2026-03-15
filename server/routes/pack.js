@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { openPack } = require("../services/packService.js");
 
-router.get("/open", async (requestAnimationFrame, res) => {
+router.get("/open", async (req, res) => {
   const cards = await openPack();
   res.json(cards);
 });

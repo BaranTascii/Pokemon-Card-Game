@@ -8,7 +8,6 @@ async function getRandomPokemon() {
   return {
     id: res.data.id,
     name: res.data.name,
-
     image: res.data.sprites.other["official-artwork"].front_default,
   };
 }
@@ -18,10 +17,8 @@ async function openPack() {
 
   for (let i = 0; i < 10; i++) {
     const pokemon = await getRandomPokemon();
-
     cards.push(pokemon);
   }
-
   return cards;
 }
 

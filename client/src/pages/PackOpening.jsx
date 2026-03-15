@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { openPack } from "../services/api";
-import Card from "../components/Card";
+import { openPack } from "../services/api.js";
+import Card from "../components/Card.jsx";
 
 export default function PackOpening() {
   const [cards, setCards] = useState([]);

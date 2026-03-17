@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     default: 100,
   },
 
-  collection: [
+  cards: [
     {
       pokemonId: Number,
       name: String,

@@ -4,9 +4,14 @@ const router = express.Router();
 
 const { openPack } = require("../services/packService.js");
 
-router.get("/open", async (req, res) => {
-  const cards = await openPack();
-  res.json(cards);
+router.post("/open", async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const result = await openPack(userId);
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 });
 
 module.exports = router;

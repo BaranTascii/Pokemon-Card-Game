@@ -2,9 +2,9 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 async function connectDB() {
+  console.log("MONGO_URI:", process.env.MONGO_URI);
   await mongoose.connect(process.env.MONGO_URI);
-
-  console.log("MongoDB Atlas connected");
+  console.log("MongoDB connected");
 }
 
 module.exports = connectDB;

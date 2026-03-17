@@ -6,9 +6,16 @@ export default function PackOpening() {
   const [cards, setCards] = useState([]);
 
   async function handleOpen() {
-    const pack = await openPack();
+    try {
+      const data = await openPack("USER_ID_BURAYA");
 
-    setCards(pack);
+      setCards(data.cards);
+
+      console.log("Coins:", data.coins);
+      console.log("Earned:", data.earnedCoins);
+    } catch (err) {
+      console.error(err.response?.data);
+    }
   }
 
   return (

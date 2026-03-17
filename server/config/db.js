@@ -1,9 +1,10 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
 async function connectDB() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/pokemon-game");
+  await mongoose.connect(process.env.MONGO_URI);
 
-  console.log("MongoDB connected");
+  console.log("MongoDB Atlas connected");
 }
 
 module.exports = connectDB;

@@ -40,7 +40,7 @@ async function openPack(userId) {
   let earnedCoins = 0;
 
   cards.forEach((card) => {
-    const exists = user.collection.find(
+    const exists = user.cards.find(
       (c) => c.pokemonId === card.pokemonId && c.shiny === card.shiny,
     );
 
@@ -48,7 +48,7 @@ async function openPack(userId) {
       const reward = getCoinReward(card.rarity);
       earnedCoins += reward;
     } else {
-      user.collection.push(card);
+      user.cards.push(card);
     }
   });
 

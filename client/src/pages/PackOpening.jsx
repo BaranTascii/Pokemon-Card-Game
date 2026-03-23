@@ -1,37 +1,33 @@
 import { useState } from "react";
-import { openPack } from "../services/api.js";
-import Card from "../components/Card.jsx";
+import { openPack } from "../services/api";
+
+import PackAnimation from "../components/PackAnimation";
+import Card3D from "../components/Card3D";
 
 export default function PackOpening() {
   const [cards, setCards] = useState([]);
 
   async function handleOpen() {
-    try {
-      const data = await openPack("USER_ID_BURAYA");
+    const data = await openPack("USER_ID");
 
-      setCards(data.cards);
-
-      console.log("Coins:", data.coins);
-      console.log("Earned:", data.earnedCoins);
-    } catch (err) {
-      console.error(err.response?.data);
-    }
+    setCards(data.cards);
   }
 
   return (
     <div>
       <h1>Pokemon Pack Opening</h1>
-      <button onClick={handleOpen}>Open Pack</button>
+
+      {cards.length === 0 && <PackAnimation onOpen={handleOpen} />}
+
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5,1fr)",
+          display: "flex",
           gap: "20px",
-          marginTop: "20px",
+          flexWrap: "wrap",
         }}
       >
-        {cards.map((card, index) => (
-          <Card key={index} card={card} />
+        {cards.map((card, i) => (
+          <Card3D key={i} card={card} />
         ))}
       </div>
     </div>

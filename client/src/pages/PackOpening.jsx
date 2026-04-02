@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { openPack } from "../services/api";
-
+import PokemonCard from "../components/PokemonCard";
 import PackAnimation from "../components/PackAnimation";
 import Card3D from "../components/Card3D";
 
@@ -28,6 +28,11 @@ export default function PackOpening() {
       >
         {cards.map((card, i) => (
           <Card3D key={i} card={card} />
+        ))}
+      </div>
+      <div className="cards">
+        {cards.map((card, i) => (
+          <PokemonCard key={i} card={card} />
         ))}
       </div>
     </div>

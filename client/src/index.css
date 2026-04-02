@@ -34,3 +34,43 @@
     box-shadow: 0 0 25px orange;
   }
 }
+
+.pokemon-card::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: shineOverlay 3s infinite;
+}
+
+@keyframes shineOverlay {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+  }
+}
+
+.legendary {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px gold;
+  }
+  50% {
+    box-shadow: 0 0 30px orange;
+  }
+  100% {
+    box-shadow: 0 0 10px gold;
+  }
+}

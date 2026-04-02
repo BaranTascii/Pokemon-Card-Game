@@ -1,0 +1,76 @@
+.pokemon-card {
+  width: 200px;
+  height: 300px;
+  border-radius: 15px;
+  padding: 10px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+/* IMAGE */
+.card-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.card-image img {
+  width: 120px;
+}
+
+/* FOOTER */
+.card-footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* RARITY COLORS */
+.common {
+  background: linear-gradient(135deg, #eee, #ccc);
+}
+
+.rare {
+  background: linear-gradient(135deg, #90caf9, #1976d2);
+  color: white;
+}
+
+.epic {
+  background: linear-gradient(135deg, #ce93d8, #8e24aa);
+  color: white;
+}
+
+.legendary {
+  background: linear-gradient(135deg, gold, orange);
+  color: black;
+  box-shadow: 0 0 20px gold;
+}
+
+/* SHINY EFFECT */
+.shiny-badge {
+  color: gold;
+  animation: shine 1s infinite alternate;
+}
+
+@keyframes shine {
+  from {
+    text-shadow: 0 0 5px gold;
+  }
+  to {
+    text-shadow: 0 0 15px orange;
+  }
+}

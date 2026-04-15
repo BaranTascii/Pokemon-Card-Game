@@ -1,11 +1,14 @@
-const mongoose = require("mongoose");
-
 const userSchema = new mongoose.Schema({
   username: String,
 
   coins: {
     type: Number,
     default: 100,
+  },
+
+  score: {
+    type: Number,
+    default: 0,
   },
 
   cards: [
@@ -18,5 +21,3 @@ const userSchema = new mongoose.Schema({
     },
   ],
 });
-
-module.exports = mongoose.model("User", userSchema);

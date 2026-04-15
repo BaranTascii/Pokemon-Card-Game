@@ -1,6 +1,6 @@
 const axios = require("axios");
 const User = require("../models/User");
-
+const { calculateScore } = require("./scoreService");
 const { getRarity } = require("./rarityService");
 const { isShiny } = require("./shinyService");
 const { getCoinReward } = require("./rewardService");
@@ -21,6 +21,10 @@ async function getRandomPokemon() {
     shiny,
   };
 }
+
+const gainedScore = calculateScore(cards);
+
+user.score += gainedScore;
 
 async function openPack(userId) {
   const user = await User.findById(userId);

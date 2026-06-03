@@ -1,0 +1,96 @@
+.pokemon-card {
+
+  width: 280px;
+  height: 390px;
+
+  perspective: 1200px;
+
+}
+
+.card-inner {
+
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  transform:
+
+    rotateX(var(--rotateX))
+    rotateY(var(--rotateY));
+
+  transition: transform 0.1s;
+
+}
+
+.foil {
+
+  position: absolute;
+  inset: 0;
+
+  background:
+
+    linear-gradient(
+      115deg,
+      transparent 20%,
+      rgba(255,255,255,.4) 35%,
+      rgba(255,0,255,.25) 45%,
+      rgba(0,255,255,.25) 55%,
+      transparent 80%
+    );
+
+  background-size: 250% 250%;
+
+  mix-blend-mode: color-dodge;
+
+  pointer-events: none;
+
+}
+
+.glare {
+
+  position: absolute;
+  inset: 0;
+
+  background:
+
+    radial-gradient(
+      circle at var(--pointerX) var(--pointerY),
+      rgba(255,255,255,.8),
+      transparent 35%
+    );
+
+  mix-blend-mode: screen;
+
+}
+
+.legendary .foil {
+
+  filter:
+
+    saturate(2)
+    brightness(1.4);
+
+}
+
+.shiny .foil {
+
+  animation: rainbowMove 3s linear infinite;
+
+}
+
+@keyframes rainbowMove {
+
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+
+}

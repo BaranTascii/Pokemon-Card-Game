@@ -11,13 +11,10 @@ const userSchema = new mongoose.Schema({
     default: 0,
   },
 
-  cards: [
-    {
-      pokemonId: Number,
-      name: String,
-      image: String,
-      rarity: String,
-      shiny: Boolean,
-    },
-  ],
+  lastDailyClaim: {
+    type: Date,
+    default: null,
+  },
+
+  cards: [],
 });

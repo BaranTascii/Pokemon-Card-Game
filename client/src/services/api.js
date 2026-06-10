@@ -5,3 +5,9 @@ export async function openPack(userId) {
 
   return res.data;
 }
+
+export async function claimDaily(userId) {
+  const res = await axios.post("http://localhost:5000/daily/claim", { userId });
+
+  return res.data;
+}

@@ -4,6 +4,7 @@ import PokemonCard from "../components/PokemonCard";
 import PackAnimation from "../components/PackAnimation";
 import Card3D from "../components/Card3D";
 import Leaderboard from "../components/Leaderboard";
+import DailyReward from "../components/DailyReward";
 
 export default function PackOpening() {
   const [cards, setCards] = useState([]);
@@ -37,6 +38,7 @@ export default function PackOpening() {
         ))}
       </div>
       <Leaderboard />
+      <DailyReward />
     </div>
   );
 }

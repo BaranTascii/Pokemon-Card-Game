@@ -6,6 +6,7 @@ const { Server } = require("socket.io");
 const connectDB = require("./config/db");
 const packRoutes = require("./routes/pack");
 const { getTopPlayers } = require("./services/leaderboardService");
+const dailyRoutes = require("./routes/daily");
 
 // 🔥 DB bağlantısı
 connectDB();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // 🔥 Routes
 app.use("/pack", packRoutes);
+app.use("/daily", dailyRoutes)
 
 // 🔥 HTTP + Socket server
 const server = http.createServer(app);

@@ -16,5 +16,16 @@ const userSchema = new mongoose.Schema({
     default: null,
   },
 
+  email: {
+  type: String,
+  unique: true,
+  required: true
+},
+
+password: {
+  type: String,
+  required: true
+},
+
   cards: [],
 });

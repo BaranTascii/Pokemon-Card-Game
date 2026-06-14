@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 const packRoutes = require("./routes/pack");
 const { getTopPlayers } = require("./services/leaderboardService");
 const dailyRoutes = require("./routes/daily");
+const authRoutes = require("./routes/auth");
 
 // 🔥 DB bağlantısı
 connectDB();
@@ -18,7 +19,8 @@ app.use(express.json());
 
 // 🔥 Routes
 app.use("/pack", packRoutes);
-app.use("/daily", dailyRoutes)
+app.use("/daily", dailyRoutes);
+app.use("/auth", authRoutes);
 
 // 🔥 HTTP + Socket server
 const server = http.createServer(app);

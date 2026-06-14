@@ -11,3 +11,15 @@ export async function claimDaily(userId) {
 
   return res.data;
 }
+
+export async function register(data) {
+  const res = await axios.post("http://localhost:5000/auth/register", data);
+
+  return res.data;
+}
+
+export async function login(data) {
+  const res = await axios.post("http://localhost:5000/auth/login", data);
+
+  return res.data;
+}

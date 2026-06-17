@@ -23,3 +23,9 @@ export async function login(data) {
 
   return res.data;
 }
+
+export async function getCollection(userId) {
+  const res = await axios.get(`http://localhost:5000/collection/${userId}`);
+
+  return res.data;
+}

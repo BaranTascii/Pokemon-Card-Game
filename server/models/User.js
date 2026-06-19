@@ -27,5 +27,15 @@ password: {
   required: true
 },
 
+achievements: {
+  type: [String],
+  default: []
+},
+
+packsOpened: {
+  type: Number,
+  default: 0
+}
+
   cards: [],
 });

@@ -4,6 +4,7 @@ const { calculateScore } = require("./scoreService");
 const { getRarity } = require("./rarityService");
 const { isShiny } = require("./shinyService");
 const { getCoinReward } = require("./rewardService");
+const { checkAchievements } = require("./achievementService");
 
 async function getRandomPokemon() {
   const id = Math.floor(Math.random() * 151) + 1;
@@ -65,6 +66,10 @@ async function openPack(userId) {
     coins: user.coins,
     earnedCoins,
   };
+
+  user.packsOpened += 1;
+
+  checkAchievements(user, cards);
 }
 
 module.exports = { openPack };

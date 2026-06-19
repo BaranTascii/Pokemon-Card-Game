@@ -29,3 +29,9 @@ export async function getCollection(userId) {
 
   return res.data;
 }
+
+export async function getAchievements(userId) {
+  const res = await axios.get(`http://localhost:5000/achievement/${userId}`);
+
+  return res.data;
+}

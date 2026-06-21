@@ -7,12 +7,12 @@ import Leaderboard from "../components/Leaderboard";
 import DailyReward from "../components/DailyReward";
 
 export default function PackOpening() {
-  const [cards, setCards] = useState([]);
+  const [selectedPack, setSelectedPack] = useState("basic");
 
   async function handleOpen() {
-    const data = await openPack("USER_ID");
+    const data = await openPack(user._id, selectedPack);
 
-    setCards(data.cards);
+    selectedPack(data.cards);
   }
 
   return (
@@ -39,6 +39,7 @@ export default function PackOpening() {
       </div>
       <Leaderboard />
       <DailyReward />
+      <PackShop onSelect={setSelectedPack} />
     </div>
   );
 }

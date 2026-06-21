@@ -5,6 +5,7 @@ const { getRarity } = require("./rarityService");
 const { isShiny } = require("./shinyService");
 const { getCoinReward } = require("./rewardService");
 const { checkAchievements } = require("./achievementService");
+const PACK_TYPES = require("../config/packTypes");
 
 async function getRandomPokemon() {
   const id = Math.floor(Math.random() * 151) + 1;
@@ -27,16 +28,32 @@ const gainedScore = calculateScore(cards);
 
 user.score += gainedScore;
 
-async function openPack(userId) {
+async function openPack(userId, packType) {
   const user = await User.findById(userId);
+
+  const pack = PACK_TYPES[packType];
+
+  if (!pack) {
+    throw new Error("Invalid pack");
+  }
 
   if (!user) throw new Error("User not found");
 
-  if (user.coins < 50) {
+  if (user.coins < pack.price) {
     throw new Error("Not enough coins");
   }
 
+  user.coins -= pack.price;
+
   user.coins -= 50;
+
+  if (pack.guaranteedLegendary) {
+    cards[9].rarity = "legendary";
+  }
+
+  if (pack.guaranteedShiny) {
+    cards[9].shiny = true;
+  }
 
   const cards = await Promise.all(
     Array.from({ length: 10 }, () => getRandomPokemon()),

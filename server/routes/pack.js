@@ -6,7 +6,7 @@ const { getTopPlayers } = require("../services/leaderboardService");
 
 router.post("/open", async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { userId, packType } = req.body;
 
     if (!userId) {
       return res.status(400).json({
@@ -15,7 +15,7 @@ router.post("/open", async (req, res) => {
     }
 
     // 🎴 Pack aç
-    const result = await openPack(userId);
+    const result = await openPack(userId, packType);
 
     // 🏆 Leaderboard güncelle
     const io = req.app.get("io");

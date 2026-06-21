@@ -1,7 +1,10 @@
 import axios from "axios";
 
-export async function openPack(userId) {
-  const res = await axios.post("http://localhost:5000/pack/open", { userId });
+export async function openPack(userId, packType) {
+  const res = await axios.post("http://localhost:5000/pack/open", {
+    userId,
+    packType,
+  });
 
   return res.data;
 }
@@ -35,3 +38,4 @@ export async function getAchievements(userId) {
 
   return res.data;
 }
+

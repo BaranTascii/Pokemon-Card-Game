@@ -25,6 +25,8 @@ export default function Navbar() {
         <>
           <span>{user.username}</span>
 
+          <span>💰 {user.coins}</span>
+
           <button onClick={logout}>Logout</button>
         </>
       )}
